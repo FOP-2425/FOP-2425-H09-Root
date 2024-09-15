@@ -35,4 +35,12 @@ public class Zoo<A> {
         return a;
     }
 
+    public static<A> Zoo<A> of(A... animals) {
+        Zoo<A> zoo = new Zoo<>();
+
+        zoo.animals = animals;
+
+        return zoo;
+    }
+
 }

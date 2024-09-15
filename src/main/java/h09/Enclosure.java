@@ -1,28 +1,34 @@
 package h09;
 
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public abstract class Enclosure<A extends Animal> extends Zoo<A> {
-    abstract public void feed();
+public interface Enclosure<A extends Animal> {
+    void feed();
+    StackOfObjects<A> getStack();
 
-    public void forEach(Consumer<? super A> func)
+     default void forEach(Consumer<? super A> func)
     {
-        for (A animal : getAnimals())
+        for (A animal : getStack().getAnimals())
             func.accept(animal);
     }
 
-    public void filterObj(Predicate<? super A> filter) {
-        for (A a : getAnimals())
-            if (!filter.test(a)) remove(a);
+     default void filterObj(Predicate<? super A> filter) {
+        for (A a : getStack().getAnimals())
+            if (!filter.test(a)) getStack().remove(a);
     }
 
-    public <E extends Enclosure<A>> E filterFunc(Supplier<? extends E> supp, Predicate<? super A> filter) {
+     default <E extends Enclosure<A>> E filterFunc(Supplier<? extends E> supp, Predicate<? super A> filter) {
         E filtered = supp.get();
-        for (A a : getAnimals())
-            if (filter.test(a)) filtered.add(a);
+        for (A a : getStack().getAnimals())
+            if (filter.test(a)) filtered.getStack().push(a);
         return filtered;
+    }
+
+     static <A extends Animal, E extends Enclosure<A>> E of(Supplier<? extends E> supp, A... animals) {
+        E zoo = supp.get();
+        zoo.getStack().animals = animals;
+        return zoo;
     }
 }

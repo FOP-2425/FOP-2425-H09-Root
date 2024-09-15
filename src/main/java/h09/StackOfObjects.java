@@ -1,13 +1,17 @@
 package h09;
 
-public class Zoo<A> {
-    private A[] animals = (A[]) new Object[0];
+import org.tudalgo.algoutils.student.annotation.DoNotTouch;
+import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
+
+public class StackOfObjects<A> {
+    protected A[] animals = (A[]) new Object[0];
 
     public A[] getAnimals() {
         return animals;
     };
 
-    public void add(A animal) {
+    @StudentImplementationRequired
+    public void push(A animal) {
         A[] newAnimals = (A[]) new Object[animals.length + 1];
         for (int i = 0; i < animals.length; i++) {
             newAnimals[i] = animals[i];
@@ -35,12 +39,12 @@ public class Zoo<A> {
         return a;
     }
 
-    public static<A> Zoo<A> of(A... animals) {
-        Zoo<A> zoo = new Zoo<>();
 
-        zoo.animals = animals;
-
-        return zoo;
+    public static <A> StackOfObjects<A> of(A... animals) {
+        StackOfObjects<A> stack = new StackOfObjects<>();
+        stack.animals = animals;
+        return stack;
     }
+
 
 }

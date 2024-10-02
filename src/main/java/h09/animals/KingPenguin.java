@@ -1,4 +1,4 @@
-package h09;
+package h09.animals;
 
 public class KingPenguin extends Penguin {
     public KingPenguin(String name, int age) {
@@ -6,6 +6,6 @@ public class KingPenguin extends Penguin {
     }
 
     void king() {
-        System.out.println(name + " is King!");
+        System.out.println(getName() + " is King!");
     }
 }

@@ -1,4 +1,4 @@
-package h09;
+package h09.abilities;
 
 public interface Walks {
     int getNumberOfLegs();

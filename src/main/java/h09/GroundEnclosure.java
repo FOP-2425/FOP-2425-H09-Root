@@ -1,14 +1,20 @@
 package h09;
 
-public class GroundEnclosure<A extends Animal & Walks> extends Enclosure<A> {
+import h09.abilities.Walks;
+import h09.animals.Animal;
 
+public class GroundEnclosure<A extends Animal & Walks> implements Enclosure<A> {
+    StackOfObjects<A> animals = new StackOfObjects<>();
 
     @Override
-    public void feed() {
-
+    public StackOfObjects<A> getStack() {
+        return animals;
     }
 
-    public int countLegs(A a) {
-        return a.getNumberOfLegs();
+    public int countLegs() {
+        int sum = 0;
+        for (int i = 0; i < getStack().size(); i++)
+            sum += getStack().get(i).getNumberOfLegs();
+        return sum;
     }
 }

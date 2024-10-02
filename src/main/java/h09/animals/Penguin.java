@@ -1,4 +1,7 @@
-package h09;
+package h09.animals;
+
+import h09.abilities.Swims;
+import h09.abilities.Walks;
 
 public class Penguin extends Animal implements Walks, Swims {
     public Penguin(String name, int age) {
@@ -6,8 +9,8 @@ public class Penguin extends Animal implements Walks, Swims {
     }
 
     @Override
-    public float getAmplitude() {
-        return name.length();
+    public float getAltitude() {
+        return getName().length();
     }
 
     @Override

@@ -1,22 +1,30 @@
 package h09;
 
-public class WaterEnclosure<A extends Animal & Swims> extends Enclosure<A> {
+import h09.abilities.Swims;
+import h09.animals.Animal;
 
+public class WaterEnclosure<A extends Animal & Swims> implements Enclosure<A> {
+    StackOfObjects<A> animals = new StackOfObjects<A>();
 
     @Override
-    public void feed() {
-
+    public StackOfObjects<A> getStack() {
+        return animals;
     }
 
-    public void feedAtAmplitude(A a) {
-        a.getAmplitude();
-        a.eat();
+    public void feedAtAmplitude(float amplitude) {
+        for (int i = 0; i < getStack().size(); i++) {
+            A a = getStack().get(i);
+            if (a.getAltitude() == amplitude) a.eat();
+        }
     }
 
     public float getMaxAmplitude() {
         float maxAmplitude = 0;
-        for (A a : getAnimals())
-            if (a.getAmplitude() > maxAmplitude) maxAmplitude = a.getAmplitude();
+        for (int i = 0; i < getStack().size(); i++) {
+            A a = getStack().get(i);
+            if (a.getAltitude() > maxAmplitude) maxAmplitude = a.getAltitude();
+        }
         return maxAmplitude;
     }
+
 }

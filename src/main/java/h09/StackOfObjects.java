@@ -2,52 +2,52 @@ package h09;
 
 import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
-public class StackOfObjects<A> {
+public class StackOfObjects<O> {
     @StudentImplementationRequired("H9.1")
-    private A[] animals = (A[]) new Object[0];
+    private O[] objs = (O[]) new Object[0];
 
     @StudentImplementationRequired("H9.1")
-    public void push(A animal) {
-        A[] newAnimals = (A[]) new Object[animals.length + 1];
-        System.arraycopy(animals, 0, newAnimals, 0, animals.length);
-        newAnimals[animals.length] = animal;
-        animals = newAnimals;
+    public void push(O obj) {
+        O[] newArray = (O[]) new Object[objs.length + 1];
+        System.arraycopy(objs, 0, newArray, 0, objs.length);
+        newArray[objs.length] = obj;
+        objs = newArray;
     }
 
     @StudentImplementationRequired("H9.1")
-    public void remove(A animal) {
-        A[] newAnimals = (A[]) new Object[animals.length - 1];
+    public void remove(O obj) {
+        O[] newArray = (O[]) new Object[objs.length - 1];
         int n = 0;
-        for (int i = 0; i < animals.length; i++) {
-            A currAnimal = animals[i];
-            if (currAnimal == animal) continue;
-            newAnimals[n++] = currAnimal;
+        for (int i = 0; i < objs.length; i++) {
+            O currObj = objs[i];
+            if (currObj == obj) continue;
+            newArray[n++] = currObj;
         }
-        animals = newAnimals;
+        objs = newArray;
     }
 
     @StudentImplementationRequired("H9.1")
     public int size() {
-        return animals.length;
+        return objs.length;
     }
 
     @StudentImplementationRequired("H9.1")
-    public A get(int index) {
-        return animals[index];
+    public O get(int index) {
+        return objs[index];
     }
 
     @StudentImplementationRequired("H9.1")
-    public A pop() {
-        A a = animals[animals.length - 1];
-        remove(a);
-        return a;
+    public O pop() {
+        O o = objs[objs.length - 1];
+        remove(o);
+        return o;
     }
 
     @SafeVarargs
     @StudentImplementationRequired("H9.1")
-    public static <A> StackOfObjects<A> of(A... animals) {
-        StackOfObjects<A> stack = new StackOfObjects<>();
-        stack.animals = animals;
+    public static <O> StackOfObjects<O> of(O... objs) {
+        StackOfObjects<O> stack = new StackOfObjects<>();
+        stack.objs = objs;
         return stack;
     }
 

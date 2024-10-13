@@ -4,11 +4,19 @@ import h09.abilities.Walks;
 import h09.animals.Animal;
 
 public class GroundEnclosure<A extends Animal & Walks> implements Enclosure<A> {
-    StackOfObjects<A> animals = new StackOfObjects<>();
+    final StackOfObjects<A> animals = new StackOfObjects<>();
 
     @Override
     public StackOfObjects<A> getStack() {
         return animals;
+    }
+
+    @Override
+    public void feed() {
+        for (int i = 0; i < getStack().size(); i++) {
+            A a = getStack().get(i);
+            a.eat();
+        }
     }
 
     public int countLegs() {

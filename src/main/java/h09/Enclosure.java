@@ -2,24 +2,36 @@ package h09;
 
 import h09.abilities.Swims;
 import h09.animals.Animal;
+import org.tudalgo.algoutils.student.annotation.DoNotTouch;
+import org.tudalgo.algoutils.student.annotation.StudentCreationRequired;
+import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public interface Enclosure<A extends Animal> {
+    @StudentImplementationRequired("H9.1")
     StackOfObjects<A> getStack();
 
-    default void feed() {
+    @DoNotTouch
+    void feed();
+
+    @DoNotTouch
+    default int countHungry() {
+        int count = 0;
         for (int i = 0; i < getStack().size(); i++)
-            getStack().get(i).eat();
+            if (getStack().get(i).isHungry()) count++;
+        return count;
     }
 
+    @StudentImplementationRequired("H9.1")
     default void forEach(Consumer<? super A> func) {
         for (int i = 0; i < getStack().size(); i++)
             func.accept(getStack().get(i));
     }
 
+    @StudentImplementationRequired("H9.1")
     default void filterObj(Predicate<? super A> filter) {
         for (int i = 0; i < getStack().size(); i++) {
             A a = getStack().get(i);
@@ -27,6 +39,7 @@ public interface Enclosure<A extends Animal> {
         }
     }
 
+    @StudentImplementationRequired("H9.1")
     default <E extends Enclosure<A>> E filterFunc(Supplier<? extends E> supp, Predicate<? super A> filter) {
         E filtered = supp.get();
         for (int i = 0; i < getStack().size(); i++) {
@@ -36,21 +49,23 @@ public interface Enclosure<A extends Animal> {
         return filtered;
     }
 
-    Consumer<Animal> SLEEP =
-        Animal::sleep;
+    @DoNotTouch
+    Predicate<Animal> IS_OLD = animal -> animal.getAge() > 10;
 
-    Consumer<Animal> FEED =
-        Animal::eat;
+    @StudentCreationRequired("H9.1")
+    Predicate<Swims> SWIMS_AT_LOW_ALTITUDE = swims -> swims.getAltitude() < Swims.HIGH_ALTITUDE;
 
-    Predicate<Animal> IS_HUNGRY =
-        Animal::isHungry;
+    @StudentCreationRequired("H9.1")
+    Consumer<Animal> FEED_AND_SLEEP = a -> {
+        a.eat();
+        a.sleep();
+    };
 
-    Predicate<Swims> SWIMS_AT_HIGH_ALTITUDE =
-        swims -> swims.getAltitude() < 3;
-
-   static <T extends Animal & Swims> Consumer<T> FEED_AT_HIGH_ALTITUDE() {
+    @StudentCreationRequired("H9.1")
+    static <T extends Animal & Swims> Consumer<T> EAT_AND_SINK() {
         return (T animal) -> {
-            if (animal.getAltitude() < 3) animal.eat();
+            animal.eat();
+            animal.swimDown();
         };
     }
 }

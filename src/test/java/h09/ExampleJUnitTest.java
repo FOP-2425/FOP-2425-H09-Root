@@ -1,7 +1,10 @@
 package h09;
 
+import h09.abilities.Swims;
+import h09.animals.Animal;
 import h09.animals.Penguin;
 import org.junit.jupiter.api.Test;
+import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,6 +19,7 @@ public class ExampleJUnitTest {
     }
 
     @Test
+    @StudentImplementationRequired("H9.1")
     public void testForEach() {
         Penguin penga = new Penguin("Penga", 1);
         Penguin penge = new Penguin("Penge", 2);
@@ -30,7 +34,7 @@ public class ExampleJUnitTest {
         assertTrue(penge.isHungry());
         assertTrue(pengi.isHungry());
 
-        enclosure.forEach(Enclosure.FEED);
+        enclosure.forEach(Animal::eat);
 
         assertFalse(penga.isHungry());
         assertFalse(penge.isHungry());
@@ -39,6 +43,7 @@ public class ExampleJUnitTest {
 
 
     @Test
+    @StudentImplementationRequired("H9.1")
     public void testFilter() {
         Penguin penga = new Penguin("Penga", 1);
         Penguin penge = new Penguin("Penge", 2);
@@ -55,9 +60,14 @@ public class ExampleJUnitTest {
         assertTrue(penge.isHungry());
         assertTrue(pengi.isHungry());
 
-        WaterEnclosure<Penguin> newEnclosure = enclosure.filterFunc(WaterEnclosure::new, Enclosure.IS_HUNGRY);
+        enclosure
+            .filterFunc(WaterEnclosure::new, Animal::isHungry)
+            .filterFunc(WaterEnclosure::new, p -> p.getAltitude() < Swims.HIGH_ALTITUDE)
+            .forEach(Swims::swimUp);
+        enclosure
+            .filterFunc(WaterEnclosure::new, Animal::isHungry)
+            .forEach(Enclosure.EAT_AND_SINK());
 
-        assertEquals(newEnclosure.getStack().size(), 2);
     }
 
 }

@@ -1,5 +1,6 @@
 package h09;
 
+import h09.abilities.Swims;
 import h09.animals.Animal;
 
 import java.util.function.Consumer;
@@ -35,4 +36,21 @@ public interface Enclosure<A extends Animal> {
         return filtered;
     }
 
+    Consumer<Animal> SLEEP =
+        Animal::sleep;
+
+    Consumer<Animal> FEED =
+        Animal::eat;
+
+    Predicate<Animal> IS_HUNGRY =
+        Animal::isHungry;
+
+    Predicate<Swims> SWIMS_AT_HIGH_ALTITUDE =
+        swims -> swims.getAltitude() < 3;
+
+   static <T extends Animal & Swims> Consumer<T> FEED_AT_HIGH_ALTITUDE() {
+        return (T animal) -> {
+            if (animal.getAltitude() < 3) animal.eat();
+        };
+    }
 }

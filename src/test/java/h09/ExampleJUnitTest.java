@@ -30,7 +30,7 @@ public class ExampleJUnitTest {
         assertTrue(penge.isHungry());
         assertTrue(pengi.isHungry());
 
-        enclosure.forEach(Lambdas.FEED);
+        enclosure.forEach(Enclosure.FEED);
 
         assertFalse(penga.isHungry());
         assertFalse(penge.isHungry());
@@ -55,7 +55,7 @@ public class ExampleJUnitTest {
         assertTrue(penge.isHungry());
         assertTrue(pengi.isHungry());
 
-        WaterEnclosure<Penguin> newEnclosure = enclosure.filterFunc(WaterEnclosure::new, Lambdas.IS_HUNGRY);
+        WaterEnclosure<Penguin> newEnclosure = enclosure.filterFunc(WaterEnclosure::new, Enclosure.IS_HUNGRY);
 
         assertEquals(newEnclosure.getStack().size(), 2);
     }

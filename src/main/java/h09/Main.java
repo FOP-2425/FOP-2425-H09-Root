@@ -44,7 +44,7 @@ public class Main {
         fishEnclosure.feed();
 
         System.out.println("\nGet fish max altitude...");
-        System.out.println("Max Altitude: " + fishEnclosure.getMaxAmplitude());
+        System.out.println("Max Altitude: " + fishEnclosure.getMaxAltitude());
 
         System.out.println("\nCreating penguin enclosure...");
         GroundEnclosure<Penguin> penguinGroundEnclosure = new GroundEnclosure<>();

@@ -3,9 +3,18 @@ package h09.animals;
 import h09.abilities.Swims;
 import h09.abilities.Walks;
 
+/**
+ * An object of a class {@link Penguin} represents a penguin which can swim and walk.
+ */
 public class Penguin extends Animal implements Walks, Swims {
     float altitude = 0;
 
+    /**
+     * Constructs a Penguin with the given name and age.
+     *
+     * @param name the name of the animal
+     * @param age  the age of the animal
+     */
     public Penguin(String name, int age) {
         super(name, age);
     }

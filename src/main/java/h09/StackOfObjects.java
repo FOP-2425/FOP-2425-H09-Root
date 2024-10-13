@@ -2,6 +2,7 @@ package h09;
 
 import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
+@SuppressWarnings({"ManualArrayCopy"})
 public class StackOfObjects<O> {
     @StudentImplementationRequired("H9.1.1")
     private O[] objs = (O[]) new Object[0];
@@ -9,7 +10,7 @@ public class StackOfObjects<O> {
     @StudentImplementationRequired("H9.1.2")
     public void push(O obj) {
         O[] newArray = (O[]) new Object[objs.length + 1];
-        System.arraycopy(objs, 0, newArray, 0, objs.length);
+        for (int i = 0; i < objs.length; i++) newArray[i] = objs[i];
         newArray[objs.length] = obj;
         objs = newArray;
     }

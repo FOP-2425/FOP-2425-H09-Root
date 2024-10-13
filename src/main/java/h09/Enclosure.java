@@ -112,7 +112,9 @@ public interface Enclosure<A extends Animal> {
     };
 
     /**
-     * {@link Consumer} which lets the consumed {@link Animal} eat and sleep.
+     * Returns a {@link Consumer} which lets the consumed swimming {@link Animal} eat and swim down.
+     * @return a {@link Consumer} which lets the consumed swimming {@link Animal} eat and swim down
+     * @param <T> Type of the swimming {@link Animal} to eat and swim down
      */
     @StudentCreationRequired("H9.4.3")
     static <T extends Animal & Swims> Consumer<T> EAT_AND_SINK() {

@@ -18,8 +18,7 @@ public class StackOfObjects<O> {
     public void remove(O obj) {
         O[] newArray = (O[]) new Object[objs.length - 1];
         int n = 0;
-        for (int i = 0; i < objs.length; i++) {
-            O currObj = objs[i];
+        for (O currObj : objs) {
             if (currObj == obj) continue;
             newArray[n++] = currObj;
         }

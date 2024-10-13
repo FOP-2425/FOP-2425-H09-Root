@@ -26,12 +26,11 @@ public class WaterEnclosure<A extends Animal & Swims> implements Enclosure<A> {
     }
 
     public float getMaxAmplitude() {
-        float maxAmplitude = 0;
+        float maxAmplitude = Float.NEGATIVE_INFINITY;
         for (int i = 0; i < getStack().size(); i++) {
             A a = getStack().get(i);
             if (a.getAltitude() > maxAmplitude) maxAmplitude = a.getAltitude();
         }
         return maxAmplitude;
     }
-
 }

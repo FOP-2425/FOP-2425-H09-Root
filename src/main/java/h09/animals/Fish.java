@@ -9,7 +9,7 @@ public class Fish extends Animal implements Swims {
 
     @Override
     public float getAltitude() {
-        return Swims.MAX_ALTITUDE - (Swims.MIN_ALTITUDE - Swims.MAX_ALTITUDE) / (getName().length() + 1);
+        return Swims.MAX_ALTITUDE - (Swims.MAX_ALTITUDE - Swims.MIN_ALTITUDE) / (getName().length() + 1);
     }
 
     @Override

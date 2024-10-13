@@ -35,7 +35,10 @@ public interface Enclosure<A extends Animal> {
     default void filterObj(Predicate<? super A> filter) {
         for (int i = 0; i < getStack().size(); i++) {
             A a = getStack().get(i);
-            if (!filter.test(a)) getStack().remove(a);
+            if (!filter.test(a)) {
+                getStack().remove(a);
+                i--;
+            }
         }
     }
 

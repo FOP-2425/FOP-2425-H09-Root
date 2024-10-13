@@ -20,15 +20,17 @@ public class Main {
         lionEnclosure.getStack().push(new Lion("Lib", 2));
         lionEnclosure.getStack().push(new Lion("Lic", 3));
 
-        System.out.println("\nCounting legs of Lions...");
+        System.out.println("\nCounting legs of lions...");
         System.out.println("Legs: " + lionEnclosure.countLegs());
+
+        System.out.println("\nFeed the lions...");
+        lionEnclosure.feed();
 
         System.out.println("\nCreating fish enclosure...");
         WaterEnclosure<Fish> fishEnclosure = new WaterEnclosure<>();
-        fishEnclosure.getStack().push(new Fish("Fisha", 1));
-        fishEnclosure.getStack().push(new Fish("Fishb", 2));
+        fishEnclosure.getStack().push(new Fish("Fishaaa", 1));
+        fishEnclosure.getStack().push(new Fish("Fishbb", 2));
         fishEnclosure.getStack().push(new Fish("Fisch", 3));
-
 
         System.out.println("Get fish altitude...");
         fishEnclosure.forEach(fish -> System.out.println(fish.getName() + ": " + fish.getAltitude()));
@@ -38,8 +40,8 @@ public class Main {
         fishEnclosure.forEach(Fish::swimUp);
         fishEnclosure.forEach(Fish::swimUp);
 
-        System.out.println("\nGet fish name...");
-        fishEnclosure.forEach(fish -> System.out.println(fish.getName()));
+        System.out.println("\nFeed the fish...");
+        fishEnclosure.feed();
 
         System.out.println("\nGet fish max altitude...");
         System.out.println("Max Altitude: " + fishEnclosure.getMaxAmplitude());
@@ -63,5 +65,10 @@ public class Main {
 
         System.out.println("\nFeed old penguins and let them sleep...");
         penguinWaterEnclosure.filterFunc(WaterEnclosure::new, Enclosure.IS_OLD).forEach(Enclosure.FEED_AND_SLEEP);
+
+
+        System.out.println("\nRemove old penguins");
+        penguinWaterEnclosure.filterObj(Enclosure.IS_OLD.negate());
+        System.out.println(penguinWaterEnclosure.getStack().size() + " young penguin(s) left.");
     }
 }

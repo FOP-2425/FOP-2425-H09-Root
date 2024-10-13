@@ -11,9 +11,18 @@ jagr {
     assignmentId.set("h09")
     submissions {
         val main by creating {
-            // studentId.set("")
-            // firstName.set("")
-            // lastName.set("")
+            studentId.set("ab12cdef")
+            firstName.set("sol_first")
+            lastName.set("sol_last")
+        }
+    }
+    graders {
+        val graderPrivate by creating {
+            graderName.set("H09-Private")
+            rubricProviderName.set("h09.H09_RubricProvider")
+            configureDependencies {
+                implementation(libs.algoutils.tutor)
+            }
         }
     }
 }
@@ -21,6 +30,7 @@ jagr {
 dependencies {
     implementation(libs.annotations)
     implementation(libs.algoutils.student)
+    implementation(libs.fopbot)
     testImplementation(libs.junit.core)
 }
 

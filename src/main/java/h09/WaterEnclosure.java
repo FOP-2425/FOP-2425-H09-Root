@@ -4,7 +4,7 @@ import h09.abilities.Swims;
 import h09.animals.Animal;
 import org.tudalgo.algoutils.student.annotation.StudentCreationRequired;
 
-@StudentCreationRequired("H9.1")
+@StudentCreationRequired("H9.2.2")
 public class WaterEnclosure<A extends Animal & Swims> implements Enclosure<A> {
     StackOfObjects<A> animals = new StackOfObjects<>();
 

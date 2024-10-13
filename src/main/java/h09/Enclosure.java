@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public interface Enclosure<A extends Animal> {
-    @StudentImplementationRequired("H9.1")
+    @StudentImplementationRequired("H9.2.1")
     StackOfObjects<A> getStack();
 
     @DoNotTouch
@@ -25,13 +25,13 @@ public interface Enclosure<A extends Animal> {
         return count;
     }
 
-    @StudentImplementationRequired("H9.1")
+    @StudentImplementationRequired("H9.3.1")
     default void forEach(Consumer<? super A> func) {
         for (int i = 0; i < getStack().size(); i++)
             func.accept(getStack().get(i));
     }
 
-    @StudentImplementationRequired("H9.1")
+    @StudentImplementationRequired("H9.3.2")
     default void filterObj(Predicate<? super A> filter) {
         for (int i = 0; i < getStack().size(); i++) {
             A a = getStack().get(i);
@@ -39,7 +39,7 @@ public interface Enclosure<A extends Animal> {
         }
     }
 
-    @StudentImplementationRequired("H9.1")
+    @StudentImplementationRequired("H9.3.3")
     default <E extends Enclosure<A>> E filterFunc(Supplier<? extends E> supp, Predicate<? super A> filter) {
         E filtered = supp.get();
         for (int i = 0; i < getStack().size(); i++) {
@@ -52,16 +52,16 @@ public interface Enclosure<A extends Animal> {
     @DoNotTouch
     Predicate<Animal> IS_OLD = animal -> animal.getAge() > 10;
 
-    @StudentCreationRequired("H9.1")
+    @StudentCreationRequired("H9.4.1")
     Predicate<Swims> SWIMS_AT_LOW_ALTITUDE = swims -> swims.getAltitude() < Swims.HIGH_ALTITUDE;
 
-    @StudentCreationRequired("H9.1")
+    @StudentCreationRequired("H9.4.2")
     Consumer<Animal> FEED_AND_SLEEP = a -> {
         a.eat();
         a.sleep();
     };
 
-    @StudentCreationRequired("H9.1")
+    @StudentCreationRequired("H9.4.3")
     static <T extends Animal & Swims> Consumer<T> EAT_AND_SINK() {
         return (T animal) -> {
             animal.eat();

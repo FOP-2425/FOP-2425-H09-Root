@@ -19,7 +19,7 @@ public class ExampleJUnitTest {
     }
 
     @Test
-    @StudentImplementationRequired("H9.1")
+    @StudentImplementationRequired("H9.5.1")
     public void testForEach() {
         Penguin penga = new Penguin("Penga", 1);
         Penguin penge = new Penguin("Penge", 2);
@@ -43,7 +43,7 @@ public class ExampleJUnitTest {
 
 
     @Test
-    @StudentImplementationRequired("H9.1")
+    @StudentImplementationRequired("H9.5.2")
     public void testFilter() {
         Penguin penga = new Penguin("Penga", 1);
         Penguin penge = new Penguin("Penge", 2);

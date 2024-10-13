@@ -1,7 +1,7 @@
 package h09.animals;
 
 public class Animal {
-    private final String name;
+    protected String name;
     private int age;
     private boolean isHungry = true;
 

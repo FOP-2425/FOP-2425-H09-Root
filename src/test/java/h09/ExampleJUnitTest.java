@@ -62,7 +62,7 @@ public class ExampleJUnitTest {
 
         enclosure
             .filterFunc(WaterEnclosure::new, Animal::isHungry)
-            .filterFunc(WaterEnclosure::new, p -> p.getAltitude() < Swims.HIGH_ALTITUDE)
+            .filterFunc(WaterEnclosure::new, Enclosure.SWIMS_AT_LOW_ALTITUDE)
             .forEach(Swims::swimUp);
         enclosure
             .filterFunc(WaterEnclosure::new, Animal::isHungry)

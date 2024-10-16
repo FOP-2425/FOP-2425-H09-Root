@@ -3,7 +3,6 @@ package h09;
 import h09.abilities.Swims;
 import h09.animals.Animal;
 import org.tudalgo.algoutils.student.annotation.DoNotTouch;
-import org.tudalgo.algoutils.student.annotation.StudentCreationRequired;
 import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
 import java.util.function.Consumer;
@@ -99,13 +98,13 @@ public interface Enclosure<A extends Animal> {
     /**
      * {@link Predicate} which returns true if a swimming {@link Animal} swims at a low altitude.
      */
-    @StudentCreationRequired("H9.4.1")
+    @StudentImplementationRequired("H9.4.1")
     Predicate<Swims> SWIMS_AT_LOW_ALTITUDE = swims -> swims.getAltitude() < Swims.HIGH_ALTITUDE;
 
     /**
      * {@link Consumer} which lets the consumed {@link Animal} eat and sleep.
      */
-    @StudentCreationRequired("H9.4.2")
+    @StudentImplementationRequired("H9.4.2")
     Consumer<Animal> FEED_AND_SLEEP = a -> {
         a.eat();
         a.sleep();
@@ -113,10 +112,11 @@ public interface Enclosure<A extends Animal> {
 
     /**
      * Returns a {@link Consumer} which lets the consumed swimming {@link Animal} eat and swim down.
-     * @return a {@link Consumer} which lets the consumed swimming {@link Animal} eat and swim down
+     *
      * @param <T> Type of the swimming {@link Animal} to eat and swim down
+     * @return a {@link Consumer} which lets the consumed swimming {@link Animal} eat and swim down
      */
-    @StudentCreationRequired("H9.4.3")
+    @StudentImplementationRequired("H9.4.3")
     static <T extends Animal & Swims> Consumer<T> EAT_AND_SINK() {
         return (T animal) -> {
             animal.eat();

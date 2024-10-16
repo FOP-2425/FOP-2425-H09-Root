@@ -69,5 +69,4 @@ public class ExampleJUnitTest {
             .forEach(Enclosure.EAT_AND_SINK());
 
     }
-
 }

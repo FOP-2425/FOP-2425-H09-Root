@@ -29,6 +29,8 @@ public class Penguin extends Animal implements Walks, Swims {
     public Penguin(String name, int age, float altitude) {
         super(name, age);
         this.altitude = altitude;
+        if (altitude > Swims.MAX_ALTITUDE) this.altitude = Swims.MAX_ALTITUDE;
+        if (altitude < Swims.MIN_ALTITUDE) this.altitude = Swims.MIN_ALTITUDE;
     }
 
     @Override

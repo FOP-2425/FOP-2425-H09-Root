@@ -40,8 +40,7 @@ public class Penguin extends Animal implements Walks, Swims {
 
     @Override
     public void swimUp() {
-        altitude += 4;
-        if (altitude > Swims.MAX_ALTITUDE) altitude = Swims.MAX_ALTITUDE;
+        altitude = Swims.MAX_ALTITUDE;
     }
 
     @Override

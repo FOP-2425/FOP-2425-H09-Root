@@ -7,7 +7,7 @@ import h09.abilities.Walks;
  * An object of a class {@link Penguin} represents a penguin which can swim and walk.
  */
 public class Penguin extends Animal implements Walks, Swims {
-    float altitude = 0;
+    float altitude = Swims.MAX_ALTITUDE / Swims.MIN_ALTITUDE;
 
     /**
      * Constructs a Penguin with the given name and age.
@@ -17,6 +17,18 @@ public class Penguin extends Animal implements Walks, Swims {
      */
     public Penguin(String name, int age) {
         super(name, age);
+    }
+
+    /**
+     * Constructs a Penguin with the given name, age and altitude.
+     *
+     * @param name     the name of the animal
+     * @param age      the age of the animal
+     * @param altitude the altitude of the animal
+     */
+    public Penguin(String name, int age, float altitude) {
+        super(name, age);
+        this.altitude = altitude;
     }
 
     @Override

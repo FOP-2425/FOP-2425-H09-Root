@@ -1,10 +1,8 @@
 package h09;
 
-import h09.abilities.Swims;
-import h09.animals.Animal;
-import h09.animals.Penguin;
+import h09.animals.Fish;
+import h09.animals.Lion;
 import org.junit.jupiter.api.Test;
-import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,54 +17,49 @@ public class ExampleJUnitTest {
     }
 
     @Test
-    @StudentImplementationRequired("H9.5.1")
-    public void testForEach() {
-        Penguin penga = new Penguin("Penga", 1);
-        Penguin penge = new Penguin("Penge", 2);
-        Penguin pengi = new Penguin("Pengi", 3);
+    public void testGroundEnclosure() {
+        // crating lions
+        Lion lia = new Lion("Lia", 1);
+        Lion lib = new Lion("Lib", 1);
+        Lion lic = new Lion("Lic", 1);
 
-        WaterEnclosure<Penguin> enclosure = new WaterEnclosure<>();
-        enclosure.getStack().push(penga);
-        enclosure.getStack().push(penge);
-        enclosure.getStack().push(pengi);
+        // Creating lion enclosure...
+        GroundEnclosure<Lion> lionEnclosure = new GroundEnclosure<>();
+        lionEnclosure.getStack().push(lia);
+        lionEnclosure.getStack().push(lib);
+        lionEnclosure.getStack().push(lic);
 
-        assertTrue(penga.isHungry());
-        assertTrue(penge.isHungry());
-        assertTrue(pengi.isHungry());
+        // Counting legs of lions...
+        assertEquals(lionEnclosure.countLegs(), 3 * 4);
 
-        enclosure.forEach(Animal::eat);
-
-        assertFalse(penga.isHungry());
-        assertFalse(penge.isHungry());
-        assertFalse(pengi.isHungry());
+        // Feed the lions...
+        assertTrue(lia.isHungry());
+        lionEnclosure.feed();
+        assertFalse(lia.isHungry());
     }
 
-
     @Test
-    @StudentImplementationRequired("H9.5.2")
-    public void testFilter() {
-        Penguin penga = new Penguin("Penga", 1);
-        Penguin penge = new Penguin("Penge", 2);
-        Penguin pengi = new Penguin("Pengi", 3);
+    public void testWaterEnclosure() {
+        // crating fish
+        Fish fisha = new Fish("Fishaaa", 1);
+        Fish fib = new Fish("Fishbb", 1);
+        Fish fisch = new Fish("Fisch", 1);
 
-        WaterEnclosure<Penguin> enclosure = new WaterEnclosure<>();
-        enclosure.getStack().push(penga);
-        enclosure.getStack().push(penge);
-        enclosure.getStack().push(pengi);
+        // Creating fish enclosure...
+        WaterEnclosure<Fish> fishEnclosure = new WaterEnclosure<>();
+        fishEnclosure.getStack().push(fisha);
+        fishEnclosure.getStack().push(fib);
+        fishEnclosure.getStack().push(fisch);
 
-        penga.eat();
+        // Check max amplitude / hungry
+        assertEquals(fishEnclosure.getMaxAltitude(), -1.25);
+        assertTrue(fisch.isHungry());
 
-        assertFalse(penga.isHungry());
-        assertTrue(penge.isHungry());
-        assertTrue(pengi.isHungry());
+        // feed the fish (they swim down, when they have eaten)
+        fishEnclosure.feed();
 
-        enclosure
-            .filterFunc(WaterEnclosure::new, Animal::isHungry)
-            .filterFunc(WaterEnclosure::new, Enclosure.SWIMS_AT_LOW_ALTITUDE)
-            .forEach(Swims::swimUp);
-        enclosure
-            .filterFunc(WaterEnclosure::new, Animal::isHungry)
-            .forEach(Enclosure.EAT_AND_SINK());
-
+        // Check max amplitude / hungry
+        assertEquals(fishEnclosure.getMaxAltitude(), -2.5);
+        assertFalse(fisch.isHungry());
     }
 }

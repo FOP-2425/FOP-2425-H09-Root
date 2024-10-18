@@ -1,10 +1,5 @@
 package h09;
 
-import h09.animals.Animal;
-import h09.animals.Fish;
-import h09.animals.Lion;
-import h09.animals.Penguin;
-
 /**
  * Main entry point in executing the program.
  */

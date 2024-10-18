@@ -42,30 +42,36 @@ public class EnclosureTest {
     @Test
     @StudentImplementationRequired("H9.5.2")
     public void testFilter() {
-        Penguin penga = new Penguin("Penga", 1, 0);
-        Penguin penge = new Penguin("Penge", 2, -4);
-        Penguin pengi = new Penguin("Pengi", 3, -10);
+        Penguin penga = new Penguin("Penga", 1, -5);
+        Penguin pengb = new Penguin("Penb", 2, -5);
 
         WaterEnclosure<Penguin> enclosure = new WaterEnclosure<>();
         enclosure.getStack().push(penga);
-        enclosure.getStack().push(penge);
-        enclosure.getStack().push(pengi);
+        enclosure.getStack().push(pengb);
 
         penga.eat();
 
         assertFalse(penga.isHungry());
-        assertTrue(penge.isHungry());
-        assertTrue(pengi.isHungry());
+        assertTrue(pengb.isHungry());
+        assertFalse(penga.getAltitude() > Swims.HIGH_ALTITUDE);
+        assertFalse(pengb.getAltitude() > Swims.HIGH_ALTITUDE);
 
         enclosure
             .filterFunc(WaterEnclosure::new, Animal::isHungry)
             .filterFunc(WaterEnclosure::new, Enclosure.SWIMS_AT_LOW_ALTITUDE)
             .forEach(Swims::swimUp);
 
+        assertFalse(penga.getAltitude() > Swims.HIGH_ALTITUDE);
+        assertTrue(pengb.getAltitude() > Swims.HIGH_ALTITUDE);
 
         enclosure
             .filterFunc(WaterEnclosure::new, Animal::isHungry)
             .forEach(Enclosure.EAT_AND_SINK());
+
+        assertFalse(penga.getAltitude() > Swims.HIGH_ALTITUDE);
+        assertFalse(pengb.getAltitude() > Swims.HIGH_ALTITUDE);
+        assertFalse(penga.isHungry());
+        assertFalse(pengb.isHungry());
 
     }
 }

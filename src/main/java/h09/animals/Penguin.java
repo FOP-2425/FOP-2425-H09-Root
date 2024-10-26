@@ -7,7 +7,7 @@ import h09.abilities.Walks;
  * An object of a class {@link Penguin} represents a penguin which can swim and walk.
  */
 public class Penguin extends Animal implements Walks, Swims {
-    float altitude = Swims.MAX_ALTITUDE / Swims.MIN_ALTITUDE;
+    float elevation = Swims.MAX_ELEVATION / Swims.MIN_ELEVATION;
 
     /**
      * Constructs a Penguin with the given name and age.
@@ -20,33 +20,33 @@ public class Penguin extends Animal implements Walks, Swims {
     }
 
     /**
-     * Constructs a Penguin with the given name, age and altitude.
+     * Constructs a Penguin with the given name, age and elevation.
      *
      * @param name     the name of the animal
      * @param age      the age of the animal
-     * @param altitude the altitude of the animal
+     * @param elevation the elevation of the animal
      */
-    public Penguin(String name, int age, float altitude) {
+    public Penguin(String name, int age, float elevation) {
         super(name, age);
-        this.altitude = altitude;
-        if (altitude > Swims.MAX_ALTITUDE) this.altitude = Swims.MAX_ALTITUDE;
-        if (altitude < Swims.MIN_ALTITUDE) this.altitude = Swims.MIN_ALTITUDE;
+        this.elevation = elevation;
+        if (elevation < Swims.MAX_ELEVATION) this.elevation = Swims.MAX_ELEVATION;
+        if (elevation > Swims.MIN_ELEVATION) this.elevation = Swims.MIN_ELEVATION;
     }
 
     @Override
-    public float getAltitude() {
-        return altitude;
+    public float getElevation() {
+        return elevation;
     }
 
     @Override
     public void swimUp() {
-        altitude = Swims.MAX_ALTITUDE;
+        elevation = Swims.MAX_ELEVATION;
     }
 
     @Override
     public void swimDown() {
-        altitude -= 4;
-        if (altitude < Swims.MIN_ALTITUDE) altitude = Swims.MIN_ALTITUDE;
+        elevation -= 4;
+        if (elevation < Swims.MIN_ELEVATION) elevation = Swims.MIN_ELEVATION;
     }
 
     @Override

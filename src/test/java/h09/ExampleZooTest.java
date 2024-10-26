@@ -17,8 +17,8 @@ public class ExampleZooTest {
         fishEnclosure.getStack().push(new Fish("Fisch", 3));
 
         // can be used after H9.3.1
-        System.out.println("Get fish altitude...");
-        fishEnclosure.forEach(fish -> System.out.println(fish.getName() + ": " + fish.getAltitude()));
+        System.out.println("Get fish elevation...");
+        fishEnclosure.forEach(fish -> System.out.println(fish.getName() + ": " + fish.getElevation()));
 
         System.out.println("\nLet fish swim up...");
         fishEnclosure.forEach(Fish::swimUp);
@@ -28,8 +28,8 @@ public class ExampleZooTest {
         System.out.println("\nFeed the fish...");
         fishEnclosure.feed();
 
-        System.out.println("\nGet fish max altitude...");
-        System.out.println("Max Altitude: " + fishEnclosure.getMaxAltitude());
+        System.out.println("\nGet fish max elevation...");
+        System.out.println("Max Elevation: " + fishEnclosure.getMaxElevation());
 
         System.out.println("\nCreating penguin enclosure...");
         GroundEnclosure<Penguin> penguinGroundEnclosure = new GroundEnclosure<>();

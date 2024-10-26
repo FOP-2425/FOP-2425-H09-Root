@@ -52,14 +52,14 @@ public class ExampleJUnitTest {
         fishEnclosure.getStack().push(fisch);
 
         // Check max amplitude / hungry
-        assertEquals(fishEnclosure.getMaxAltitude(), -1.25);
+        assertEquals(fishEnclosure.getMaxElevation(), -1.25);
         assertTrue(fisch.isHungry());
 
         // feed the fish (they swim down, when they have eaten)
         fishEnclosure.feed();
 
         // Check max amplitude / hungry
-        assertEquals(fishEnclosure.getMaxAltitude(), -2.5);
+        assertEquals(fishEnclosure.getMaxElevation(), -2.5);
         assertFalse(fisch.isHungry());
     }
 }

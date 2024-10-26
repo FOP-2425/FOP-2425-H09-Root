@@ -96,10 +96,10 @@ public interface Enclosure<A extends Animal> {
     Predicate<Animal> IS_OLD = animal -> animal.getAge() > 10;
 
     /**
-     * {@link Predicate} which returns true if a swimming {@link Animal} swims at a low altitude.
+     * {@link Predicate} which returns true if a swimming {@link Animal} swims at a low elevation.
      */
     @StudentImplementationRequired("H9.4.1")
-    Predicate<Swims> SWIMS_AT_LOW_ALTITUDE = swims -> swims.getAltitude() < Swims.HIGH_ALTITUDE;
+    Predicate<Swims> SWIMS_AT_LOW_ELEVATION = swims -> swims.getElevation() < Swims.HIGH_ELEVATION;
 
     /**
      * {@link Consumer} which lets the consumed {@link Animal} eat and sleep.

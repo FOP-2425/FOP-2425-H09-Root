@@ -5,32 +5,32 @@ package h09.abilities;
  */
 public interface Swims {
     /**
-     * @return the altitude of the swimming animal
+     * @return the elevation of the swimming animal
      */
-    float getAltitude();
+    float getElevation();
 
     /**
-     * Lets the animal swim up and increase in altitude.
+     * Lets the animal swim up and increase in elevation.
      */
     void swimUp();
 
     /**
-     * Lets the animal swim down and decrease in altitude.
+     * Lets the animal swim down and decrease in elevation.
      */
     void swimDown();
 
     /**
-     * The max altitude an animal can swim to.
+     * The max elevation an animal can swim to.
      */
-    float MAX_ALTITUDE = 0;
+    float MAX_ELEVATION = 0;
 
     /**
-     * The min altitude an animal can swim to.
+     * The min elevation an animal can swim to.
      */
-    float MIN_ALTITUDE = -10;
+    float MIN_ELEVATION = -10;
 
     /**
-     * The altitude above which an animal is considered at a high altitude or at the surface.
+     * The elevation above which an animal is considered at a high elevation or at the surface.
      */
-    float HIGH_ALTITUDE = -3;
+    float HIGH_ELEVATION = -3;
 }

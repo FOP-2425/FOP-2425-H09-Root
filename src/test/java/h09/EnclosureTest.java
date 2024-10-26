@@ -53,23 +53,23 @@ public class EnclosureTest {
 
         assertFalse(penga.isHungry());
         assertTrue(pengb.isHungry());
-        assertFalse(penga.getAltitude() > Swims.HIGH_ALTITUDE);
-        assertFalse(pengb.getAltitude() > Swims.HIGH_ALTITUDE);
+        assertFalse(penga.getElevation() > Swims.HIGH_ELEVATION);
+        assertFalse(pengb.getElevation() > Swims.HIGH_ELEVATION);
 
         enclosure
             .filterFunc(WaterEnclosure::new, Animal::isHungry)
-            .filterFunc(WaterEnclosure::new, Enclosure.SWIMS_AT_LOW_ALTITUDE)
+            .filterFunc(WaterEnclosure::new, Enclosure.SWIMS_AT_LOW_ELEVATION)
             .forEach(Swims::swimUp);
 
-        assertFalse(penga.getAltitude() > Swims.HIGH_ALTITUDE);
-        assertTrue(pengb.getAltitude() > Swims.HIGH_ALTITUDE);
+        assertFalse(penga.getElevation() > Swims.HIGH_ELEVATION);
+        assertTrue(pengb.getElevation() > Swims.HIGH_ELEVATION);
 
         enclosure
             .filterFunc(WaterEnclosure::new, Animal::isHungry)
             .forEach(Enclosure.EAT_AND_SINK());
 
-        assertFalse(penga.getAltitude() > Swims.HIGH_ALTITUDE);
-        assertFalse(pengb.getAltitude() > Swims.HIGH_ALTITUDE);
+        assertFalse(penga.getElevation() > Swims.HIGH_ELEVATION);
+        assertFalse(pengb.getElevation() > Swims.HIGH_ELEVATION);
         assertFalse(penga.isHungry());
         assertFalse(pengb.isHungry());
 

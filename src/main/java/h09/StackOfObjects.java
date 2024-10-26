@@ -1,5 +1,6 @@
 package h09;
 
+import org.tudalgo.algoutils.student.annotation.DoNotTouch;
 import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
 /**
@@ -44,7 +45,7 @@ public class StackOfObjects<O> {
      *
      * @return the number of objects
      */
-    @StudentImplementationRequired("H9.1.4")
+    @DoNotTouch
     public int size() {
         return objs.length;
     }

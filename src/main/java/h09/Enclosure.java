@@ -30,11 +30,12 @@ public interface Enclosure<A extends Animal> {
      *
      * @return number of hungry {@link Animal}s in the enclosure
      */
+    @SuppressWarnings("RedundantCast")
     @DoNotTouch
     default int countHungry() {
         int count = 0;
         for (int i = 0; i < getStack().size(); i++)
-            if (getStack().get(i).isHungry()) count++;
+            if (((Animal) getStack().get(i)).isHungry()) count++;
         return count;
     }
 

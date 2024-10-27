@@ -40,8 +40,8 @@ public class Turtle extends Animal implements Walks, Swims {
 
     @Override
     public void swimDown() {
-        float dElevation = (random.nextFloat()) * 2 - 1.5f; // Random float between -1.5 and 0.5
-        if (dElevation > 0) System.out.println("Oh no! " + getName() + " is floating up!");
+        float dElevation = (random.nextFloat()) * 2 - 0.5f; // Random float between -0.5 and 1.5
+        if (dElevation < 0) System.out.println("Oh no! " + getName() + " is floating up!");
         setElevation(elevation - dElevation);
     }
 

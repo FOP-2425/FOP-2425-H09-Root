@@ -22,8 +22,8 @@ public class Penguin extends Animal implements Walks, Swims {
     /**
      * Constructs a Penguin with the given name, age and elevation.
      *
-     * @param name     the name of the animal
-     * @param age      the age of the animal
+     * @param name      the name of the animal
+     * @param age       the age of the animal
      * @param elevation the elevation of the animal
      */
     public Penguin(String name, int age, float elevation) {

@@ -20,8 +20,8 @@ public class GroundEnclosure<A extends Animal & Walks> implements Enclosure<A> {
 
     @Override
     public void feed() {
-        for (int i = 0; i < getStack().size(); i++) {
-            A a = getStack().get(i);
+        for (int i = 0; i < this.getStack().size(); i++) {
+            A a = this.getStack().get(i);
             a.eat();
         }
     }
@@ -33,8 +33,8 @@ public class GroundEnclosure<A extends Animal & Walks> implements Enclosure<A> {
      */
     public int countLegs() {
         int sum = 0;
-        for (int i = 0; i < getStack().size(); i++)
-            sum += getStack().get(i).getNumberOfLegs();
+        for (int i = 0; i < this.getStack().size(); i++)
+            sum += this.getStack().get(i).getNumberOfLegs();
         return sum;
     }
 }

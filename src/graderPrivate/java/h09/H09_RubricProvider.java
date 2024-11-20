@@ -38,7 +38,8 @@ public class H09_RubricProvider implements RubricProvider {
                 .addChildCriteria(
                     criterion("forEach hat korrekt beschränkte Typparameter.", 3),
                     criterion("filterObj hat korrekt beschränkte Typparameter.", 3),
-                    criterion("filterFunc hat korrekt beschränkte Typparameter.", 6)
+                    criterion("filterFunc hat korrekt beschränkte Typparameter.", 4),
+                    criterion("filterFunc hat gibt korrekt ein neues Enclosure mit gefilterten Tieren zurück.", 2)
                     )
                 .build(),
             Criterion.builder()

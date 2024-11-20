@@ -13,7 +13,7 @@ public class WaterEnclosure<A extends Animal & Swims> implements Enclosure<A> {
      * The stack of animals which is used manage the contained Animals.
      */
     @StudentImplementationRequired("H9.2.2")
-    StackOfObjects<A> animals = new StackOfObjects<>();
+    final StackOfObjects<A> animals = new StackOfObjects<>();
 
     @StudentImplementationRequired("H9.2.2")
     @Override

@@ -34,8 +34,8 @@ public interface Enclosure<A extends Animal> {
     @DoNotTouch
     default int countHungry() {
         int count = 0;
-        for (int i = 0; i < getStack().size(); i++)
-            if (((Animal) getStack().get(i)).isHungry()) count++;
+        for (int i = 0; i < this.getStack().size(); i++)
+            if (((Animal) this.getStack().get(i)).isHungry()) count++;
         return count;
     }
 
@@ -47,8 +47,8 @@ public interface Enclosure<A extends Animal> {
      */
     @StudentImplementationRequired("H9.3.1")
     default void forEach(Consumer<? super A> func) {
-        for (int i = 0; i < getStack().size(); i++)
-            func.accept(getStack().get(i));
+        for (int i = 0; i < this.getStack().size(); i++)
+            func.accept(this.getStack().get(i));
     }
 
     /**
@@ -60,10 +60,10 @@ public interface Enclosure<A extends Animal> {
      */
     @StudentImplementationRequired("H9.3.2")
     default void filterObj(Predicate<? super A> filter) {
-        for (int i = 0; i < getStack().size(); i++) {
-            A a = getStack().get(i);
+        for (int i = 0; i < this.getStack().size(); i++) {
+            A a = this.getStack().get(i);
             if (!filter.test(a)) {
-                getStack().remove(a);
+                this.getStack().remove(a);
                 i--;
             }
         }
@@ -83,8 +83,8 @@ public interface Enclosure<A extends Animal> {
     @StudentImplementationRequired("H9.3.3")
     default <E extends Enclosure<A>> E filterFunc(Supplier<? extends E> supp, Predicate<? super A> filter) {
         E filtered = supp.get();
-        for (int i = 0; i < getStack().size(); i++) {
-            A a = getStack().get(i);
+        for (int i = 0; i < this.getStack().size(); i++) {
+            A a = this.getStack().get(i);
             if (filter.test(a)) filtered.getStack().push(a);
         }
         return filtered;

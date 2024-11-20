@@ -54,8 +54,8 @@ public class H09_RubricProvider implements RubricProvider {
                 .shortDescription("H9.5 | Enclosure::forEach")
                 .addChildCriteria(
                     criterion("Drei Lion Objekte werden erstellt sowie gefüttert und Fehlfunktionen der Methode forEach werden erkannt."),
-                    criterion("Zwei Penguin Objekte werden korrekt erstellt, bewegt sowie gefüttert."),
-                    criterion("Fehlfunktionen der Methode filterFunc werden erkannt.")
+                    criterion("Zwei Penguin Objekte werden korrekt erstellt, bewegt und gefüttert."),
+                    criterion("Einfache Fehlfunktionen der Methode filterFunc werden erkannt.")
                 )
                 .build()
         )

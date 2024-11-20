@@ -39,7 +39,7 @@ public class H09_RubricProvider implements RubricProvider {
                     criterion("forEach hat korrekt beschränkte Typparameter.", 3),
                     criterion("filterObj hat korrekt beschränkte Typparameter.", 3),
                     criterion("filterFunc hat korrekt beschränkte Typparameter.", 4),
-                    criterion("filterFunc hat gibt korrekt ein neues Enclosure mit gefilterten Tieren zurück.", 2)
+                    criterion("filterFunc gibt korrekt ein neues Enclosure mit gefilterten Tieren zurück.", 2)
                     )
                 .build(),
             Criterion.builder()
@@ -53,7 +53,7 @@ public class H09_RubricProvider implements RubricProvider {
             Criterion.builder()
                 .shortDescription("H9.5 | Enclosure::forEach")
                 .addChildCriteria(
-                    criterion("Drei Lion Objekte werden erstellt sowie gefüttert und Fehlfunktionen der Methode forEach werden erkannt."),
+                    criterion("Drei Lion Objekte werden erstellt sowie gefüttert und einfache Fehlfunktionen der Methode forEach werden erkannt."),
                     criterion("Zwei Penguin Objekte werden korrekt erstellt, bewegt und gefüttert."),
                     criterion("Einfache Fehlfunktionen der Methode filterFunc werden erkannt.")
                 )

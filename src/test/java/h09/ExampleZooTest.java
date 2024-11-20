@@ -28,8 +28,8 @@ public class ExampleZooTest {
         System.out.println("\nFeed the fish...");
         fishEnclosure.feed();
 
-        System.out.println("\nGet fish max elevation...");
-        System.out.println("Max Elevation: " + fishEnclosure.getMaxElevation());
+        System.out.println("\nGet fish mean elevation...");
+        System.out.println("Mean elevation: " + fishEnclosure.getMeanElevation());
 
         System.out.println("\nCreating penguin enclosure...");
         GroundEnclosure<Penguin> penguinGroundEnclosure = new GroundEnclosure<>();

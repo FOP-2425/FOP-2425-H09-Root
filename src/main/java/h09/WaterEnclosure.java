@@ -24,8 +24,8 @@ public class WaterEnclosure<A extends Animal & Swims> implements Enclosure<A> {
     @StudentImplementationRequired("H9.2.2")
     @Override
     public void feed() {
-        for (int i = 0; i < getStack().size(); i++) {
-            A a = getStack().get(i);
+        for (int i = 0; i < this.getStack().size(); i++) {
+            A a = this.getStack().get(i);
             if (a.isHungry()) {
                 if (a.getElevation() < Swims.HIGH_ELEVATION) a.swimUp();
                 a.eat();
@@ -35,17 +35,17 @@ public class WaterEnclosure<A extends Animal & Swims> implements Enclosure<A> {
     }
 
     /**
-     * Compares the elevations of all {@link Animal}s in the enclosure and returns the maximum.
+     * Compares the elevations of all {@link Animal}s in the enclosure and returns the mean.
      *
-     * @return the max elevation of all {@link Animal}s in the enclosure
+     * @return the mean elevation of all {@link Animal}s in the enclosure
      */
     @StudentImplementationRequired("H9.2.2")
-    public float getMaxElevation() {
-        float maxElevation = Float.NEGATIVE_INFINITY;
-        for (int i = 0; i < getStack().size(); i++) {
-            A a = getStack().get(i);
-            if (a.getElevation() > maxElevation) maxElevation = a.getElevation();
+    public float getMeanElevation() {
+        float sum = 0;
+        for (int i = 0; i < this.getStack().size(); i++) {
+            A a = this.getStack().get(i);
+            sum += a.getElevation();
         }
-        return maxElevation;
+        return sum / this.getStack().size();
     }
 }

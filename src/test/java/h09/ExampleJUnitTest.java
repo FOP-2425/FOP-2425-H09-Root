@@ -1,5 +1,6 @@
 package h09;
 
+import h09.abilities.Swims;
 import h09.animals.Fish;
 import h09.animals.Lion;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ public class ExampleJUnitTest {
         lionEnclosure.getStack().push(lic);
 
         // Counting legs of lions...
-        assertEquals(lionEnclosure.countLegs(), 3 * 4);
+        assertEquals(3 * 4, lionEnclosure.countLegs());
 
         // Feed the lions...
         assertTrue(lia.isHungry());
@@ -51,15 +52,23 @@ public class ExampleJUnitTest {
         fishEnclosure.getStack().push(fib);
         fishEnclosure.getStack().push(fisch);
 
-        // Check max amplitude / hungry
-        assertEquals(fishEnclosure.getMaxElevation(), -1.25);
+        // Check mean elevation / hungry
+        float expected1 = Swims.MAX_ELEVATION -
+            ((Swims.MAX_ELEVATION - Swims.MIN_ELEVATION) / (fisha.getName().length() + 1)
+                + (Swims.MAX_ELEVATION - Swims.MIN_ELEVATION) / (fib.getName().length() + 1)
+                + (Swims.MAX_ELEVATION - Swims.MIN_ELEVATION) / (fisch.getName().length() + 1)) / 3;
+        assertEquals(expected1, fishEnclosure.getMeanElevation());
         assertTrue(fisch.isHungry());
 
         // feed the fish (they swim down, when they have eaten)
         fishEnclosure.feed();
 
-        // Check max amplitude / hungry
-        assertEquals(fishEnclosure.getMaxElevation(), -2.5);
+        // Check mean elevation / hungry
+        float expected2 = Swims.MAX_ELEVATION -
+            ((Swims.MAX_ELEVATION - Swims.MIN_ELEVATION) / (fisha.getName().length() + 1)
+                + (Swims.MAX_ELEVATION - Swims.MIN_ELEVATION) / (fib.getName().length() + 1)
+                + (Swims.MAX_ELEVATION - Swims.MIN_ELEVATION) / (fisch.getName().length() + 1)) / 3;
+        assertEquals(expected2, fishEnclosure.getMeanElevation());
         assertFalse(fisch.isHungry());
     }
 }

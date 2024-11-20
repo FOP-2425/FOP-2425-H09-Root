@@ -30,7 +30,7 @@ public class H09_RubricProvider implements RubricProvider {
                     criterion("Waterenclosure besitzt einen korrekt beschränkten Typparameter und implementiert Enclosure korrekt."),
                     criterion("Waterenclosure::getStack funktioniert korrekt."),
                     criterion("Waterenclosure::feed getStack funktioniert korrekt.", 2),
-                    criterion("Waterenclosure::getMaxElevation getStack funktioniert korrekt.")
+                    criterion("Waterenclosure::getMeanElevation getStack funktioniert korrekt.")
                 )
                 .build(),
             Criterion.builder()

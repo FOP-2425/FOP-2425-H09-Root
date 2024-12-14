@@ -6,7 +6,7 @@ plugins {
 version = file("version").readLines().first()
 
 exercise {
-    assignmentId.set("h09")
+    assignmentId.set("h07")
 }
 
 submission {
@@ -25,17 +25,13 @@ submission {
     requireTests = false
 }
 
-dependencies {
-    implementation(libs.fopbot)
-}
-
 jagr {
     graders {
         val graderPublic by getting
         val graderPrivate by creating {
             parent(graderPublic)
-            graderName.set("FOP-2425-H09-Private")
-            rubricProviderName.set("h09.H09_RubricProvider")
+            graderName.set("FOP-2425-H07-Private")
+            rubricProviderName.set("h07.H07_RubricProvider")
         }
     }
 }

@@ -25,10 +25,6 @@ submission {
     requireTests = false
 }
 
-dependencies {
-    implementation(libs.fopbot)
-}
-
 jagr {
     graders {
         val graderPublic by getting

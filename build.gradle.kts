@@ -6,7 +6,7 @@ plugins {
 version = file("version").readLines().first()
 
 exercise {
-    assignmentId.set("h07")
+    assignmentId.set("h09")
 }
 
 submission {
@@ -30,8 +30,8 @@ jagr {
         val graderPublic by getting
         val graderPrivate by creating {
             parent(graderPublic)
-            graderName.set("FOP-2425-H07-Private")
-            rubricProviderName.set("h07.H07_RubricProvider")
+            graderName.set("FOP-2425-H09-Private")
+            rubricProviderName.set("h09.H09_RubricProvider")
         }
     }
 }
